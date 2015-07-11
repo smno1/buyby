@@ -5,5 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-admin=User.find_by :email =>'test@test.com'
+admin=User.find_by :email =>ENV["ADMIN"]
 admin.add_role :admin

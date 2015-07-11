@@ -4,7 +4,6 @@ class CreateRequests < ActiveRecord::Migration
       t.string :subject
       t.string :description
       t.references :user, index: true, foreign_key: true
-      t.references :status, index: true, foreign_key: true
       t.boolean :read
 
       t.timestamps null: false

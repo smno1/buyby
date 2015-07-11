@@ -1,0 +1,30 @@
+<% if is_admin?%>
+<h2>Requests List</h2>
+<table class='display datatable'>
+	<thead>
+		<tr>
+			<th>Subject</th>
+			<th>Description</th>
+			<th>Request By</th>
+			<th>Time</th>
+			<th>Total Offer</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @requests.each do |request| %>
+		<tr>
+
+			<td><%= link_to request do%><%= request.subject %><%end%></td>
+			<td><%= request.description.truncate(20) %></td>
+			<td><%= request.user.nickname %></td>
+			<td><%= request.created_at %></td>
+			<td><%= request.offers.count %></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
+
+<%else%>
+You don't have the authority to check this page
+<%end%>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Requests</h1>
+
+<table class="display datatable">
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.subject %></td>
+        <td><%= request.description %></td>
+        <td><%= link_to 'Show Offer', request %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Request', new_request_path %>

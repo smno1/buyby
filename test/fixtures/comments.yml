@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyString
+  read: false
+  offer_id: 
+  user_id: 
+  status_id: 
+
+two:
+  content: MyString
+  read: false
+  offer_id: 
+  user_id: 
+  status_id: 

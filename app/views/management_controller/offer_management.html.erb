@@ -1,0 +1,33 @@
+<% if is_admin?%>
+<h2>Offer Management</h2>
+<h3>My Offers</h3>
+<table class='display datatable'>
+	<thead>
+		<tr>
+			<th>Subject</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>toward_request</th>
+			<th>toward_user</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @my_offers.each do |offer| %>
+		<tr>
+
+			<td><%= link_to offer do%><%= offer.subject %><%end%></td>
+			<td><%= offer.description %></td>
+			<td><%= offer.price %></td>
+			<td><%= offer.request.try :subject %></td>
+			<td><%= link_to user_management_path(:user_id=>offer.request.user_id) do%><%= offer.request.user.try :nickname %><%end%></td>
+			<td><%= offer.status.try :name %></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
+
+<%else%>
+You don't have the authority to check this page
+<%end%>

@@ -1,0 +1,40 @@
+  <h1 class="text-center">Sign up</h1>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  <form class="form col-md-12 center-block">
+    <div class="form-group">
+      <%= f.text_field :nickname, :class=>"form-control input-lg", :placeholder=>"nickname" %>
+    </div>
+    <div class="form-group">
+      <%= f.email_field :email, autofocus: true, :class=>"form-control input-lg", :placeholder=>"Email" %>
+    </div>
+    <div class="form-group">
+      <% if @validatable %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off",:class=>"form-control input-lg", :placeholder=>"Password" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.password_field :password_confirmation, autocomplete: "off",:class=>"form-control input-lg", :placeholder=>"Password-Confirm" %>
+    </div>
+    
+    <div class="form-group">
+      <em>(only visible to admin and deliver)</em>
+      <%= f.text_field :real_name, :class=>"form-control input-lg", :placeholder=>"real_name" %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :phone_number, :class=>"form-control input-lg", :placeholder=>"phone_number" %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :other_contact_method, :class=>"form-control input-lg", :placeholder=>"other_contact_method" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Sign up", :class=>"btn btn-primary btn-lg btn-block" %>
+      <span class="pull-right"><%= render "users/shared/links" %></span>
+    </div>
+  </form>
+  <% end %>
+

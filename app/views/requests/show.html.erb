@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @request.subject %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @request.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @request.user.nickname %>
+</p>
+
+<% if is_dealer?%>
+	<%=link_to 'provide offer', new_request_offer_path(@request), :class=>"btn btn-default" %>
+<%end%>
+<br/>
+<h2>Current Offers</h2>
+	<table class='table table-bordered'>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Offer By</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @request.offers.each do |offer| %>
+      <tr>
+      	<td><%= offer.subject %></td>
+        <td><%= offer.description %></td>
+        <td><%= offer.price %></td>
+        <td><%= offer.user.nickname %></td>
+        <td><%= offer.created_at %></td>
+      </tr>
+<%end%>
+  </tbody>
+</table>

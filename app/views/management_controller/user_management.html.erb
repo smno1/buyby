@@ -1,0 +1,36 @@
+<% if is_admin?%>
+<h2>User Management</h2>
+<table class='display datatable'>
+	<thead>
+		<tr>
+			<th>Nick Name</th>
+			<th>Real Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Other Contact Method</th>
+			<th>Note</th>
+			<th>Last Sign In at</th>
+			<th>Current Sign In at</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+
+			<td><%= link_to user do%><%= user.nickname %><%end%></td>
+			<td><%= user.real_name %></td>
+			<td><%= user.email %></td>
+			<td><%= user.phone_number %></td>
+			<td><%= user.other_contact_method %></td>
+			<td><%= user.note %></td>
+			<td><%= user.last_sign_in_at %></td>
+			<td><%= user.current_sign_in_at %></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
+
+<%else%>
+You don't have the authority to check this page
+<%end%>

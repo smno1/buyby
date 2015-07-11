@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyString
+  description: MyString
+  price: 9.99
+  read: false
+  request_id: 
+  user_id: 
+  status_id: 
+
+two:
+  subject: MyString
+  description: MyString
+  price: 9.99
+  read: false
+  request_id: 
+  user_id: 
+  status_id: 

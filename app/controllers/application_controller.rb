@@ -12,7 +12,11 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin?
-    return current_user.present? && current_user.has_role?(:admin)
+    current_user.present? && current_user.has_role?(:admin)
+  end
+
+  def redirect_unless_admin
+    redirect_to :root unless current_user && current_user.has_role?(:admin)
   end
 
   protected

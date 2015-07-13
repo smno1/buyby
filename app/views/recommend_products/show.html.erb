@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @recommend_product.product %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @recommend_product.active %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @recommend_product.reason %>
+</p>
+
+<%= link_to 'Edit', edit_recommend_product_path(@recommend_product) %> |
+<%= link_to 'Back', recommend_products_path %>

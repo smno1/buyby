@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Recommend Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Active</th>
+      <th>Reason</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recommend_products.each do |recommend_product| %>
+      <tr>
+        <td><%= recommend_product.product %></td>
+        <td><%= recommend_product.active %></td>
+        <td><%= recommend_product.reason %></td>
+        <td><%= link_to 'Show', recommend_product %></td>
+        <td><%= link_to 'Edit', edit_recommend_product_path(recommend_product) %></td>
+        <td><%= link_to 'Destroy', recommend_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recommend product', new_recommend_product_path %>

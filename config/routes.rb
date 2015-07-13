@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :recommend_products
+  resources :products
   get 'offer_management'=>'management_controller#offer_management', as: :offer_management
 
   get 'user_management'=>'management_controller#user_management', as: :user_management

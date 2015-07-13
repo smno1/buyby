@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :product_id %><br>
-    <%= f.text_field :product_id %>
+    <%= f.select :product_id, options_from_collection_for_select(@products,"id","name", @recommend_product.product_id) %>
   </div>
   <div class="field">
     <%= f.label :active %><br>

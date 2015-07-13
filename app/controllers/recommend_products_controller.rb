@@ -15,10 +15,12 @@ class RecommendProductsController < ApplicationController
   # GET /recommend_products/new
   def new
     @recommend_product = RecommendProduct.new
+    @products=Product.all
   end
 
   # GET /recommend_products/1/edit
   def edit
+    @products=Product.all
   end
 
   # POST /recommend_products

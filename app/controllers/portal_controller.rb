@@ -1,5 +1,5 @@
 class PortalController < ApplicationController
   def welcome
-  	@recommends=RecommendProduct.all
+  	@recommends=RecommendProduct.where(:active=>true)
   end
 end

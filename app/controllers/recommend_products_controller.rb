@@ -30,7 +30,7 @@ class RecommendProductsController < ApplicationController
 
     respond_to do |format|
       if @recommend_product.save
-        format.html { redirect_to @recommend_product, notice: 'Recommend product was successfully created.' }
+        format.html { redirect_to recommend_products_path, notice: 'Recommend product was successfully created.' }
         format.json { render :show, status: :created, location: @recommend_product }
       else
         format.html { render :new }

@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :requests
   has_many :offers
+  has_many :received_offers, :through=>:requests
 end

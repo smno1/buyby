@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+#carousel gem
+gem 'owlcarousel-rails'
 #gem datatable
 gem 'jquery-datatables-rails', '~> 3.3.0'
 #gem for solving turbolink problem

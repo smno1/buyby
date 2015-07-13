@@ -19,7 +19,7 @@
 			<td><%= request.description.truncate(20) %></td>
 			<td><%= request.user.nickname %></td>
 			<td><%= request.created_at %></td>
-			<td><%= request.offers.count %></td>
+			<td><%= request.received_offers.count %></td>
 		</tr>
 		<%end%>
 	</tbody>

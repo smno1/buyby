@@ -2,6 +2,7 @@ class ManagementControllerController < ApplicationController
 	before_action :authenticate_user!
 	def offer_management
 		@my_offers=current_user.offers
+		@received_offers=current_user.received_offers
 		@offers=Offer.all
 	end
 

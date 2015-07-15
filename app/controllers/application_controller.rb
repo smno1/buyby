@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
   helper_method :is_dealer?
   #before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
+
+  def set_locale
+    I18n.locale=params[:locale]||I18n.default_locale
+  end
   
   def is_dealer?
     return current_user.present? && (current_user.has_role?(:admin) || current_user.has_role?(:dealer))

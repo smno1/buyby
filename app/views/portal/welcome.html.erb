@@ -1,12 +1,12 @@
 <h1 >
-	Our service , your comfort
+	<%=t(:slogan)%>
 </h1>
 <p>
-	Professional delegation buying agent service
+	<%=t(:desc)%>
 </p>
 <div class="col-lg-12">
 	<h1 class="page-header">
-		Recommend
+		<%=t(:recommend)%>
 	</h1>
 </div>
 <div class="owl-carousel">
@@ -23,7 +23,7 @@
 
 <div class="col-lg-12">
 	<h1 class="page-header">
-		My Requests
+		<%=t(:my_requests)%>
 	</h1>
 </div>
 <% current_user.requests.each_slice(3) do |requests|%>
@@ -36,14 +36,14 @@
 			</div>
 			<div class="panel-body">
 				<p> <%=request.description%></p>
-				<em>(Total offers: <%=request.offers.count%>)</em>
-				<%=link_to 'View Offers', request,:class=>"btn btn-default pull-right"%>
+				<em>(<%=t(:total_offers)%>: <%=request.offers.count%>)</em>
+				<%=link_to t(:view_offers), request,:class=>"btn btn-default pull-right"%>
 			</div>
 		</div>
 	</div>
 	<%end%>
 </div>
 <%end%>
-<%=link_to 'new request', new_user_request_path(current_user), :class=>"btn btn-default" %>
+<%=link_to t(:create_request), new_user_request_path(current_user), :class=>"btn btn-default" %>
 
 <%end%>

@@ -29,9 +29,9 @@
 							<i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
 						</a>
 						<ul class="dropdown-menu dropdown-messages">
-							<li><small>Received Offers:</small></li>
+							<li><small><%=t(:received_offers)%>:</small></li>
 							<%if current_user.received_offers.blank?%>
-							<li><a href="">empty..</a></li>
+							<li><a href=""><%=t(:empty)%>..</a></li>
 							<li class="divider"></li>
 							<%else%>
 							<%current_user.received_offers.last(3).each do |offer|%>
@@ -46,7 +46,7 @@
 							<%end%>
 							<%end%>
 							<li>
-								<%= link_to 'All Offers..', offer_management_path%>
+								<%= link_to t(:all_offers)+'..', offer_management_path%>
 							</li>
 						</ul>
 					</li>
@@ -57,13 +57,13 @@
 						<ul class="dropdown-menu dropdown-user">
 							<li>
 								<%= link_to edit_user_registration_path do %>
-								<i class="fa fa-user fa-fw"></i> User Profile
+								<i class="fa fa-user fa-fw"></i> <%=t(:user_profile)%>
 								<%end%>
 							</li>
 							<li class="divider"></li>
 							<li>
 								<%= link_to destroy_user_session_path, method: :delete do %>
-								<i class="fa fa-sign-out fa-fw"></i> Logout
+								<i class="fa fa-sign-out fa-fw"></i> <%=t(:logout)%>
 								<%end%>
 							</li>
 						</ul>
@@ -94,10 +94,10 @@
 					<%end%>
 					<% else %>
 					<li>
-						<%= link_to "Log in", new_user_session_path %>
+						<%= link_to t(:login), new_user_session_path %>
 					</li>
 					<li>
-						<%= link_to "Sign up", new_user_registration_path %>
+						<%= link_to t(:signup), new_user_registration_path %>
 					</li>
 					<% end %>
 				</ul>

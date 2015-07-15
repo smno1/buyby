@@ -16,6 +16,10 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
+    if params[:product_id].present?
+      product=Product.find(params[:product_id])
+      @request.subject=product.name
+    end
   end
 
   # GET /requests/1/edit

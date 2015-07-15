@@ -11,6 +11,37 @@ class RequestsController < ApplicationController
   # GET /requests/1
   # GET /requests/1.json
   def show
+    @offer_status=Status.where(status_type: "offer")
+  end
+
+  def accept_offer
+    offer=Offer.find(params[:offer_id])
+    offer.status_id=Status.find_by_name("accept").id
+    
+    respond_to do |format|
+      if offer.save
+        format.html { redirect_to :back, notice: t(:accpeted_offer) }
+        format.json {}
+      else
+        format.html { redirect_to :back }
+        format.json {}
+      end
+    end
+  end
+
+  def decline_offer
+    offer=Offer.find(params[:offer_id])
+    offer.status_id=Status.find_by_name("decline").id
+    
+    respond_to do |format|
+      if offer.save
+        format.html { redirect_to :back, notice: t(:declined_offer) }
+        format.json {}
+      else
+        format.html { redirect_to :back }
+        format.json {}
+      end
+    end
   end
 
   # GET /requests/new

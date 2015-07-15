@@ -16,5 +16,6 @@
  *= require dataTables/jquery.dataTables
  *= require owl.carousel
  *= require owl.theme
+ *= require bootstrap-select
  *= require_self
  */

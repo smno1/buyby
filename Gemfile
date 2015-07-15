@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-#carousel gem
+#layout gem
+gem 'bootstrap-select-rails'
 gem 'owlcarousel-rails'
 #gem datatable
 gem 'jquery-datatables-rails', '~> 3.3.0'

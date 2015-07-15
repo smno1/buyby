@@ -1,33 +1,33 @@
-<p id="notice"><%= notice %></p>
-
+<h2><%= t(:create_request) %></h2>
 <p>
-  <strong>Subject:</strong>
+  <strong><%= t(:subject) %>:</strong>
   <%= @request.subject %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= t(:description) %>:</strong>
   <%= @request.description %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong><%= t(:user) %>:</strong>
   <%= @request.user.nickname %>
 </p>
 
 <% if is_dealer?%>
-	<%=link_to 'provide offer', new_request_offer_path(@request), :class=>"btn btn-default" %>
+	<%=link_to t(:provide_offer), new_request_offer_path(@request), :class=>"btn btn-default" %>
 <%end%>
 <br/>
-<h2>Current Offers</h2>
+<h2><%= t(:current_offers) %></h2>
 	<table class='table table-bordered'>
   <thead>
     <tr>
-      <th>Subject</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Offer By</th>
-      <th>Time</th>
+      <th><%= t(:subject) %></th>
+      <th><%= t(:description) %></th>
+      <th><%= t(:price) %></th>
+      <th><%= t(:offer_by) %></th>
+      <th><%= t(:status) %></th>
+      <th><%= t(:time) %></th>
     </tr>
   </thead>
 
@@ -38,6 +38,14 @@
         <td><%= offer.description %></td>
         <td><%= offer.price %></td>
         <td><%= offer.user.nickname %></td>
+        <td>
+          <%if offer.status_id.blank?%>
+          <%=link_to accept_offer_path(:offer_id=>offer.id),:class=>"btn btn-default"  do %> <%= t(:accept) %> <i class="fa fa-fw fa-check"></i><%end%>
+          <%=link_to decline_offer_path(:offer_id=>offer.id),:class=>"btn btn-default"  do %> <%= t(:decline) %> <i class="fa fa-fw fa-times"></i><%end%>
+          <%else%>
+            <%= t(offer.status.name.to_sym) %>
+          <%end%>
+        </td>
         <td><%= offer.created_at %></td>
       </tr>
 <%end%>

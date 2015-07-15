@@ -5,5 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-admin=User.find_by :email =>ENV["ADMIN"]
-admin.add_role :admin
+case ENV["TYPE"]
+when "admin"
+	admin=User.find_by :email =>ENV["ADMIN"]
+	admin.add_role :admin
+when "status"
+	Status.create(status_type: "offer", name: "accept")
+	Status.create(status_type: "offer", name: "decline")
+
+	Status.create(status_type: "request", name: "unprocessed")
+	Status.create(status_type: "request", name: "processing")
+	Status.create(status_type: "request", name: "finished")
+end

@@ -15,6 +15,25 @@ class ManagementControllerController < ApplicationController
 	end
 
 	def request_management
-		@requests=Request.all.order('updated_at desc')
+		@requests=Request.filter(params.slice(:status_id)).order('updated_at desc')
+	    @request_status=Status.where(status_type: "request")
+	end
+
+	def update_request_status
+		puts "======================================================"
+		puts params[:request_id]
+		puts params[:status_id]
+		puts "======================================================"
+		request=Request.find(params[:request_id])
+		request.status_id=params[:status_id]
+		respond_to do |format|
+			if request.save
+				format.html { redirect_to :back, notice: t(:updated_succ) }
+				format.json {}
+			else
+				format.html { redirect_to :back }
+				format.json {}
+			end
+		end
 	end
 end

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'accept_offer' => 'requests#accept_offer', as: :accept_offer
   get 'decline_offer' => 'requests#decline_offer', as: :decline_offer
+  
+  get 'update_request_status' => 'management_controller#update_request_status', as: :update_request_status
 
   get 'offer_management'=>'management_controller#offer_management', as: :offer_management
 

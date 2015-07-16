@@ -10,6 +10,7 @@ var main = function() {
       itemsDesktopSmall : [979,3]
  
   });
+	$('.selectpicker').selectpicker();
 };
 
 $(document).ready(main);

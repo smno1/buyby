@@ -19,7 +19,7 @@
 <%end%>
 <br/>
 <h2><%= t(:current_offers) %></h2>
-	<table class='table table-bordered'>
+	<table class='table table-bordered table-hover'>
   <thead>
     <tr>
       <th><%= t(:subject) %></th>
@@ -32,7 +32,7 @@
   </thead>
 
   <tbody>
-<% @request.offers.each do |offer| %>
+    <% @request.offers.each do |offer| %>
       <tr>
       	<td><%= offer.subject %></td>
         <td><%= offer.description %></td>
@@ -40,14 +40,22 @@
         <td><%= offer.user.nickname %></td>
         <td>
           <%if offer.status_id.blank?%>
-          <%=link_to accept_offer_path(:offer_id=>offer.id),:class=>"btn btn-default"  do %> <%= t(:accept) %> <i class="fa fa-fw fa-check"></i><%end%>
-          <%=link_to decline_offer_path(:offer_id=>offer.id),:class=>"btn btn-default"  do %> <%= t(:decline) %> <i class="fa fa-fw fa-times"></i><%end%>
+            <%if offer.request.user_id.eql? current_user.id%>
+              <%=link_to accept_offer_path(:offer_id=>offer.id),:class=>"btn btn-default"  do %> 
+                <%= t(:accept) %> <i class="fa fa-fw fa-check"></i>
+              <%end%>
+              <%=link_to decline_offer_path(:offer_id=>offer.id),:class=>"btn btn-default"  do %> 
+                <%= t(:decline) %> <i class="fa fa-fw fa-times"></i>
+              <%end%>
+            <%else%>
+              <%=t(:not_processed)%>
+            <%end%>
           <%else%>
             <%= t(offer.status.name.to_sym) %>
           <%end%>
         </td>
         <td><%= offer.created_at %></td>
       </tr>
-<%end%>
+    <%end%>
   </tbody>
 </table>

@@ -50,4 +50,6 @@ cn:
   decline: "拒绝"
   accpeted_offer: "已成功接受报价"
   declined_offer: "已拒绝报价"
+  updated_succ: "更新成功"
   submit: "提交"
+  not_processed: "未处理"

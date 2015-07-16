@@ -72,4 +72,6 @@ en:
 
   accpeted_offer: "Offer was successfully accepted"
   declined_offer: "Offer was successfully declined"
+  updated_succ: "successfully updated"
   submit: "Submit"
+  not_processed: "Not processed"

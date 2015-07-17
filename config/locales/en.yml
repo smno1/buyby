@@ -24,6 +24,7 @@ en:
   create_request: "Create Request"
   product_name: "Name"
   description: "Description"
+  offer_description: "Offer Content"
   name: "Name"
   subject: "Subject"
   slogan: "Our service, Your comfort"

@@ -23,7 +23,7 @@
   <thead>
     <tr>
       <th><%= t(:subject) %></th>
-      <th><%= t(:description) %></th>
+      <th><%= t(:offer_description) %></th>
       <th><%= t(:price) %></th>
       <th><%= t(:offer_by) %></th>
       <th><%= t(:status) %></th>
@@ -54,7 +54,7 @@
             <%= t(offer.status.name.to_sym) %>
           <%end%>
         </td>
-        <td><%= offer.created_at %></td>
+        <td><%= offer.created_at.localtime %></td>
       </tr>
     <%end%>
   </tbody>

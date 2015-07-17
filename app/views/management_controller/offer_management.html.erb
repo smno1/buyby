@@ -17,7 +17,7 @@
 		<% @received_offers.each do |offer| %>
 		<tr>
 
-			<td><%= link_to offer do%><%= offer.subject %><%end%></td>
+			<td><%= link_to offer.request do%><%= offer.subject %><%end%></td>
 			<td><%= offer.description %></td>
 			<td><%= offer.price %></td>
 			<td><%= offer.request.try :subject %></td>

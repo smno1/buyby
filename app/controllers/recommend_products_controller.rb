@@ -1,6 +1,6 @@
 class RecommendProductsController < ApplicationController
   before_action :set_recommend_product, only: [:show, :edit, :update, :destroy]
-
+  before_action :redirect_unless_admin
   # GET /recommend_products
   # GET /recommend_products.json
   def index

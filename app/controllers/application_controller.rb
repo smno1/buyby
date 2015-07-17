@@ -21,7 +21,11 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_unless_admin
-    redirect_to :root unless current_user && current_user.has_role?(:admin)
+    redirect_to :root unless is_admin?
+  end
+
+  def redirect_unless_dealer
+    redirect_to :root unless is_dealer?
   end
 
   protected

@@ -10,4 +10,8 @@ module ApplicationHelper
 	def get_finished_status_code
 		Status.find_by_name('finished').id
 	end
+
+	def get_closed_status_code
+		Status.find_by_name('closed').id
+	end
 end

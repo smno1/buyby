@@ -1,5 +1,8 @@
 class OffersController < ApplicationController
 	before_action :authenticate_user!
+	before_action :set_offer, only: [:destroy]
+	before_action :redirect_unless_dealer, only: [:new,:create,:destroy]
+
 	def new
 		@offer=Offer.new
 	end
@@ -20,6 +23,14 @@ class OffersController < ApplicationController
 			end
 		end
 		
+	end
+
+	def destroy
+		@offer.destroy
+		respond_to do |format|
+			format.html { redirect_to :back, notice: 'Offer was successfully destroyed.' }
+			format.json { head :no_content }
+		end
 	end
 
 	private

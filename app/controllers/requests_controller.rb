@@ -1,6 +1,8 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :redirect_unless_admin, only: [:edit, :update, :destroy]
+
 
   # GET /requests
   # GET /requests.json
@@ -107,4 +109,4 @@ class RequestsController < ApplicationController
     def request_params
       params.require(:request).permit(:subject, :description, :user_id, :read,:status_id)
     end
-end
+  end

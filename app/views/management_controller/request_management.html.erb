@@ -9,6 +9,9 @@
 	</button>
 	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 		<li role="presentation">
+			<%= link_to 'All', request_management_path %>
+		</li>
+		<li role="presentation">
 			<%= link_to 'Unprocessed', request_management_path(:status_id=>get_unprocessed_status_code) %>
 		</li>
 		<li role="presentation">

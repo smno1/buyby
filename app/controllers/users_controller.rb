@@ -9,9 +9,6 @@ class UsersController < ApplicationController
 		puts "==============================="
 	end
 
-	def edit
-	end
-
 	def update
 		respond_to do |format|
 			if @user.update(user_params)

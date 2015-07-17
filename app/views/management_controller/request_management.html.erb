@@ -48,7 +48,7 @@
 			</td>
 			<td><%= request.description.truncate(20) %></td>
 			<td><%= request.user.nickname %></td>
-			<td><%= request.created_at.localtime %></td>
+			<td><%= request.created_at %></td>
 			<td><%= request.received_offers.count %></td>
 			<td>
 				<%=form_tag(update_request_status_path, :method=>'get') do%>

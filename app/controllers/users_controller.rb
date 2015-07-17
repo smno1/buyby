@@ -3,10 +3,6 @@ class UsersController < ApplicationController
 
 	def show
 		@attributes=@user.attributes.except(:_id, :encrypted_password,:reset_password_token)
-		puts "==============================="
-		puts "@attributes.inspect"
-		puts @attributes.inspect
-		puts "==============================="
 	end
 
 	def update

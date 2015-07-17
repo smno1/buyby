@@ -75,3 +75,5 @@ en:
   updated_succ: "successfully updated"
   submit: "Submit"
   not_processed: "Not processed"
+  login_notice: "Please login to buy"
+  note: "Note"

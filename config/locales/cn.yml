@@ -53,3 +53,5 @@ cn:
   updated_succ: "更新成功"
   submit: "提交"
   not_processed: "未处理"
+  login_notice: "登录后即可购买"
+  note: "备注"

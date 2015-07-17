@@ -17,7 +17,6 @@
 	<tbody>
 		<% @users.each do |user| %>
 		<tr>
-
 			<td><%= link_to user do%><%= user.nickname %><%end%></td>
 			<td><%= user.real_name %></td>
 			<td><%= user.email %></td>

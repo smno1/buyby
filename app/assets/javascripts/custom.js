@@ -11,6 +11,10 @@ var main = function() {
  
   });
 	$('.selectpicker').selectpicker();
+
+	$('.user_management').click(function() {
+		$(this).next().toggle();
+	});
 };
 
 $(document).ready(main);

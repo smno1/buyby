@@ -59,7 +59,7 @@
             <%= t(offer.status.name.to_sym) %>
           <%end%>
         </td>
-        <td><%= offer.created_at%></td>
+        <td><em><%= l(offer.created_at, format: '%Y - %m - %-d, %H:%M:%S')%></em></td>
       </tr>
       <tr class='hidden-toggle'>
         <td colspan=6>

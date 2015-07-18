@@ -2,6 +2,7 @@ class Request < ActiveRecord::Base
 	include Filterable
 	belongs_to :user
 	has_many :received_offers, :class_name=>"Offer"
+	has_many :received_comments, :through=>:offers
 	has_many :offers
 	has_one :status
 

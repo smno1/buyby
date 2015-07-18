@@ -8,7 +8,7 @@ class OffersController < ApplicationController
 	end
 
 	def index
-		@offers=Offer.where(:request_id=>params[:request_id])
+		@offers=current_user.received_offers
 	end
 
 	def create

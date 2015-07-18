@@ -12,7 +12,7 @@ var main = function() {
   });
 	$('.selectpicker').selectpicker();
 
-	$('.user_management').click(function() {
+	$('.show_next').click(function() {
 		$(this).next().toggle();
 	});
 };

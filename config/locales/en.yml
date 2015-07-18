@@ -20,7 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  edit_user: "Edit User"
   create_request: "Create Request"
   product_name: "Name"
   description: "Description"
@@ -31,9 +31,11 @@ en:
   desc: "Professional delegation buying agent service"
   recommend: "Recommend"
   my_requests: "My Requests"
+  requester: "Requester"
+  offeree: "Offeree"
   view_offers: "View Offers"
   total_offers: "Total Offers"
-  received_offers: "Received Offers"
+  newly_received_offers: "Received Offers"
   empty: "empty"
   all_offers: "all offers"
   user_profile: "User Profile"
@@ -78,3 +80,7 @@ en:
   not_processed: "Not processed"
   login_notice: "Please login to buy"
   note: "Note"
+  operation: "Operation"
+  reply: "Reply"
+  destroy: "Destroy"
+  destroy_confirm: "Are you sure?"

@@ -26,14 +26,14 @@
       <th><%= t(:offer_description) %></th>
       <th><%= t(:price) %></th>
       <th><%= t(:offer_by) %></th>
-      <th><%= t(:status) %></th>
+      <th><%= t(:operation) %></th>
       <th><%= t(:time) %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @request.offers.each do |offer| %>
-      <tr>
+      <tr class='show_next'>
       	<td><%= offer.subject %></td>
         <td><%= offer.description %></td>
         <td><%= offer.price %></td>
@@ -56,6 +56,22 @@
         </td>
         <td><%= offer.created_at%></td>
       </tr>
+      <tr class='hidden-toggle'>
+        <td colspan=6>
+        <%=link_to t(:reply),:class=>'pull-right'%>
+      </td>
+      </tr>
     <%end%>
   </tbody>
 </table>
+ <script>
+    // tooltip demo
+    $('.tooltip-demo').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+
+    // popover demo
+    $("[data-toggle=popover]")
+        .popover()
+    </script>

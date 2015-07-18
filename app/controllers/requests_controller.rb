@@ -16,6 +16,20 @@ class RequestsController < ApplicationController
     @offer_status=Status.where(status_type: "offer")
   end
 
+  def commit_reply_comment
+    comment=Comment.new(:content=>params[:comment_content],:user_id=>params[:user_id],
+      :offer_id=>params[:offer_id], :read=>false)
+    respond_to do |format|
+      if comment.save
+        format.html { redirect_to :back, notice: t(:reply_successful) }
+        format.json {}
+      else
+        format.html { redirect_to :back }
+        format.json {}
+      end
+    end
+  end
+
   def accept_offer
     offer=Offer.find(params[:offer_id])
     offer.status_id=Status.find_by_name("accept").id

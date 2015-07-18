@@ -35,6 +35,17 @@ body {
   background-color: #d9edf7;
   border-color: #bce8f1;
 }
+
+.others-message {
+  color: #31708f;
+  border-color: #bce8f1;
+  text-align: right;
+}
+
+.my-message {
+  color: #31708f;
+  border-color: #bce8f1;
+}
 .messages {
   max-height: 400px;
   overflow-y: auto;

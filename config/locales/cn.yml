@@ -64,6 +64,8 @@ cn:
   destroy: "删除"
   destroy_confirm: "确定删除？"
   received_offers: "收到的报价"
+  reply_content: "请输入回复内容"
+  reply_successful: "回复成功"
 
 
   activerecord:

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'users/show'
 
+  get 'commit_reply_comment'=>'requests#commit_reply_comment', as: :commit_reply_comment
   resources :recommend_products
   resources :products
 

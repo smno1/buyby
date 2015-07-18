@@ -15,6 +15,8 @@ var main = function() {
 	$('.show_next').click(function() {
 		$(this).next().toggle();
 	});
+
+	$('.unread_comment').click();
 };
 
 $(document).ready(main);

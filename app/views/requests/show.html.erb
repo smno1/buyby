@@ -58,9 +58,30 @@
       </tr>
       <tr class='hidden-toggle'>
         <td colspan=6>
-
-        <%=link_to t(:reply),:class=>'pull-right'%>
-      </td>
+          <ul class='list-unstyled'>
+          <% offer.comments.each do |comment|%>
+              <li>
+            <% if comment.user_id==current_user.id%>
+                <div class="alert my-message">
+                  <%= t(:me)+": "+comment.content %>
+                </div>
+            <%else%>  
+                <div class="alert others-message ">
+                  <%=comment.user.nickname+": "+ comment.content %>
+                </div>
+            <%end%>
+              </li>
+          <%end%>
+          </ul>
+          <%=form_tag(commit_reply_comment_path, :method=>'get') do%>
+          <div class='inline'>
+            <%= text_field_tag :comment_content, nil, :placeholder=>t(:reply_content), :class=>'form-control'%>
+            <%=hidden_field_tag :offer_id, offer.id%>
+            <%=hidden_field_tag :user_id, current_user.id%>
+            <%=submit_tag t(:reply), :class=>"btn btn-default"%>
+          </div>
+          <%end%>
+        </td>
       </tr>
     <%end%>
   </tbody>

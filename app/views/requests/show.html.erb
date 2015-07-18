@@ -6,7 +6,7 @@
 
 <p>
   <strong><%= t(:description) %>:</strong>
-  <%= @request.description %>
+  <%= @request.description.gsub(/\n/,'<br>').html_safe %>
 </p>
 
 <p>
@@ -35,7 +35,7 @@
     <% @request.offers.each do |offer| %>
       <tr class='show_next'>
       	<td><%= offer.subject %></td>
-        <td><%= offer.description %></td>
+        <td><%= offer.description.gsub(/\n/,'<br>').html_safe %></td>
         <td><%= offer.price %></td>
         <td><%= offer.user.nickname %></td>
         <td>
@@ -58,20 +58,11 @@
       </tr>
       <tr class='hidden-toggle'>
         <td colspan=6>
+
         <%=link_to t(:reply),:class=>'pull-right'%>
       </td>
       </tr>
     <%end%>
   </tbody>
 </table>
- <script>
-    // tooltip demo
-    $('.tooltip-demo').tooltip({
-        selector: "[data-toggle=tooltip]",
-        container: "body"
-    })
-
-    // popover demo
-    $("[data-toggle=popover]")
-        .popover()
-    </script>
+ 

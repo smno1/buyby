@@ -10,7 +10,7 @@
 
  	<p>
  		<strong><%=t(:description)%>:</strong>
- 		<%= @product.description %>
+ 		<%= @product.description.gsub(/\n/,'<br>').html_safe %>
  	</p>
 
 

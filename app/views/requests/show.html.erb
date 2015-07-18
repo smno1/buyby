@@ -33,7 +33,12 @@
 
   <tbody>
     <% @request.offers.each do |offer| %>
-      <tr class='show_next'>
+      <%last_comment=offer.comments.last%>
+      <%if last_comment.user_id==current_user.id || last_comment.read%>
+        <tr class='show_next'>
+      <%else%>
+        <tr data-id="<%=last_comment.id%>" class='show_next unread-comment'>
+      <%end%>
       	<td><%= offer.subject %></td>
         <td><%= offer.description.gsub(/\n/,'<br>').html_safe %></td>
         <td><%= offer.price %></td>

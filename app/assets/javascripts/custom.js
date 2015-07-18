@@ -16,7 +16,16 @@ var main = function() {
 		$(this).next().toggle();
 	});
 
-	$('.unread_comment').click();
+	$('.unread-comment').click(function(){
+		$.ajax({
+			url: "/update_unread_comment",
+			data: {
+				comment_id : $(this).attr('data-id')
+			},
+			dataType: "script"
+		});
+		$(this).removeClass('unread-comment');
+	});
 };
 
 $(document).ready(main);

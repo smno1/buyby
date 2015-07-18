@@ -30,6 +30,10 @@ class RequestsController < ApplicationController
     end
   end
 
+  def update_unread_comment
+    Comment.find(params[:comment_id]).update(:read=>true)
+  end
+
   def accept_offer
     offer=Offer.find(params[:offer_id])
     offer.status_id=Status.find_by_name("accept").id

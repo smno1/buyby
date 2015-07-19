@@ -14,7 +14,7 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @offer_status=Status.where(status_type: "offer")
-    if(params[:read])
+    if(params[:read]&& !@request.offers.last.nil?)
       @request.offers.last.update(:read=>true)
     end
   end

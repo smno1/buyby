@@ -37,7 +37,7 @@
       <%if last_comment.nil?||last_comment.user_id==current_user.id || last_comment.read%>
         <tr class='show_next'>
       <%else%>
-        <tr data-id="<%=last_comment.id%>" class='show_next unread-comment'>
+        <tr data-id="<%=last_comment.id%>" class='show_next unread unread-comment'>
       <%end%>
       	<td><%= offer.subject %></td>
         <td><%= offer.description.gsub(/\n/,'<br>').html_safe %></td>

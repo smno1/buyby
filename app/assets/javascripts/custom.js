@@ -16,6 +16,10 @@ var main = function() {
 		$(this).next().toggle();
 	});
 
+	$('.unread').notify(
+		"未读消息", "info",
+		{position:"top left"}
+		);
 	$('.unread-comment').click(function(){
 		$.ajax({
 			url: "/update_unread_comment",

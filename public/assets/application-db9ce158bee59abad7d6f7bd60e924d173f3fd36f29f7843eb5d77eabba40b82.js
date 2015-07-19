@@ -32304,9 +32304,17 @@ var main = function() {
 	});
 
 	$('.unread').notify(
-		"未读消息", "info",
-		{position:"top left"}
+		"未读消息",
+		{position:"top left",
+		className: 'info'	}
 		);
+
+	$('.new_offer').notify(
+		"收到新的报价",
+		{position:"top left",
+		className: 'info'	}
+		);
+	
 	$('.unread-comment').click(function(){
 		$.ajax({
 			url: "/update_unread_comment",

@@ -30,7 +30,11 @@
 <div class="row">
 	<%requests.each do |request| %>
 	<div class="col-md-4">
-		<div class="panel panel-default">
+		<%if request.received_offers.last.nil? || request.received_offers.last.read%>
+			<div class="panel panel-default">
+		<%else%>
+			<div class="panel panel-info new_offer">
+		<%end%>
 			<div class="panel-heading">
 				<h4><i class="fa fa-fw fa-gift"></i> <%=request.subject%></h4>
 			</div>

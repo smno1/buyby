@@ -37,6 +37,7 @@
 			<th>Time</th>
 			<th>Total Offer</th>
 			<th>Status</th>
+			<th></th>
 		</tr>
 	</thead>
 
@@ -61,6 +62,9 @@
 					<%=submit_tag t(:update), :class=>"btn btn-default"%>
 					</div>
 				<%end%>
+			</td>
+			<td>
+			<%= link_to 'show', request, :class=>"btn btn-default"%>
 			</td>
 		</tr>
 		<%end%>

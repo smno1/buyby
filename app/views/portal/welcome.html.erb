@@ -41,7 +41,7 @@
 			<div class="panel-body">
 				<p> <%=request.description%></p>
 				<em>(<%=t(:total_offers)%>: <%=request.offers.count%>)</em>
-				<%=link_to t(:view_offers), request,:class=>"btn btn-default pull-right"%>
+				<%=link_to t(:view_offers), request_path(request,:read=>true),:class=>"btn btn-default pull-right"%>
 			</div>
 		</div>
 	</div>

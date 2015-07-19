@@ -14,7 +14,9 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @offer_status=Status.where(status_type: "offer")
-    @request.offers.last.update(:read=>true)
+    if(params[:read])
+      @request.offers.last.update(:read=>true)
+    end
   end
 
   def commit_reply_comment

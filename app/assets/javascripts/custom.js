@@ -19,15 +19,19 @@ var main = function() {
 	$('.unread').notify(
 		"未读消息",
 		{position:"top left",
-		className: 'info'	}
+		className: 'info',
+		clickToHide: true,
+		autoHide: false}
 		);
 
 	$('.new_offer').notify(
 		"收到新的报价",
 		{position:"top left",
-		className: 'info'	}
+		className: 'info',
+		clickToHide: true,
+		autoHide: false	}
 		);
-	
+
 	$('.unread-comment').click(function(){
 		$.ajax({
 			url: "/update_unread_comment",

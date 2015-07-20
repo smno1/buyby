@@ -5,6 +5,7 @@ cn:
   description: "需求描述"
   product_description: "产品介绍"
   offer_description: "报价内容"
+  offer_notification: "有新的报价"
   name: "名称"
   subject: "主题"
   slogan: "澳洲留学生代购服务平台"
@@ -68,7 +69,7 @@ cn:
   reply_content: "请输入回复内容"
   reply_successful: "回复成功"
   me: "我"
-
+  thanks_shopping_note: "谢谢您使用我们的网站"
 
   activerecord:
     errors:

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @user.nickname %></h1>
+    <p>
+      您要买的： <%= @request.subject %> <br>
+      <%= @request.description %> <br>
+      <%= t(:offer_notification) %> <br>
+    </p>
+    <p>
+      <%= t(:thanks_shopping_note) %> <br>
+    </p>
+  </body>
+</html>

@@ -15,6 +15,7 @@ class OffersController < ApplicationController
 		@offer=Offer.new(offer_params)
 		respond_to do |format|
 			if @offer.save
+				Mailer.send_new_offer_notification_mail(@offer.request.user,@offer.request,t(:offer_notification)).deliver
 				format.html { redirect_to @offer.request, notice: 'Offer was successfully created.' }
 				format.json { render :show, status: :created, location: @offer }
 			else

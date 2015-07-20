@@ -24,7 +24,7 @@ var main = function() {
 		autoHide: false}
 		);
 
-	$('.new_offer').notify(
+	$('.portal_new_offer').notify(
 		"收到新的报价",
 		{position:"top left",
 		className: 'info',

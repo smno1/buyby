@@ -15,9 +15,9 @@ Rails.application.configure do
     port: 587,
     domain: "gmail.com",
     authentication: "plain",
+    enable_starttls_auto: true,
     user_name: "buyby.au@gmail.com",
     password: "SheenShawnJohnny"
-    enable_starttls_auto: true,
   }
 
   # Code is not reloaded between requests.

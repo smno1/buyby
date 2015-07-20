@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # email
-  config.action_mailer.default_url_options = { host: ENV['HOST']}
+  config.action_mailer.default_url_options = { host: 'http://buyby.herokuapp.com/'}
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -10,11 +10,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: ENV["GMAIL_DOMAIN"],
+    domain: "gmail.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: "buyby.au@gmail.com",
+    password: "SheenShawnJohnny"
   }
   # Code is not reloaded between requests.
   config.cache_classes = true

@@ -37,7 +37,7 @@
 						<ul class="dropdown-menu dropdown-messages">
 							<li><small><%=t(:unread_reply)%>:</small></li>
 							<%if unread_comments.blank?%>
-							<li><a href=""><%=t(:empty)%>..</a></li>
+							<li><a href=""><%=t(:empty_message)%>..</a></li>
 							<li class="divider"></li>
 							<%else%>
 							<%unread_comments.each do |comment|%>

@@ -24,6 +24,24 @@ var main = function() {
 		autoHide: false}
 		);
 
+	number_of_offer=$('.unread-offer-notification').attr('offer-number')
+	$('.unread-offer-notification').notify(
+		number_of_offer,
+		{position:"bottom",
+		className: 'error',
+		clickToHide: true,
+		autoHide: false}
+		);
+
+	number_of_message=$('.unread-comment-notification').attr('message-number')
+	$('.unread-comment-notification').notify(
+		number_of_message,
+		{position:"bottom",
+		className: 'error',
+		clickToHide: true,
+		autoHide: false}
+		);
+
 	$('.portal_new_offer').notify(
 		"收到新的报价",
 		{position:"top left",
@@ -36,7 +54,7 @@ var main = function() {
 		$.ajax({
 			url: "/update_unread_comment",
 			data: {
-				comment_id : $(this).attr('data-id')
+				offer_id : $(this).attr('data-id')
 			},
 			dataType: "script"
 		});

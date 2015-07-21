@@ -32,12 +32,16 @@
   </thead>
 
   <tbody>
-    <% @request.offers.each do |offer| %>
+    <% @request.offers.order('created_at desc').each do |offer| %>
       <%last_comment=offer.comments.last%>
       <%if last_comment.nil?||last_comment.user_id==current_user.id || last_comment.read%>
         <tr class='show_next'>
       <%else%>
-        <tr data-id="<%=last_comment.id%>" class='show_next unread unread-comment'>
+        <%if current_user.id==offer.request.user.id || current_user.id==offer.user.id%>
+          <tr data-id="<%=offer.id%>" class='show_next unread unread-comment'>
+        <%else%>
+          <tr data-id="<%=offer.id%>" class='show_next unread'>
+        <%end%>
       <%end%>
       	<td><%= offer.subject %></td>
         <td><%= offer.description.gsub(/\n/,'<br>').html_safe %></td>

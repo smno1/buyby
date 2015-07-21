@@ -27,6 +27,7 @@ cn:
   status: "状态"
   time: "时间"
   current_offers: "当前报价"
+  unread_reply: "未读回复"
 
   login: "登录"
   signup: "注册"

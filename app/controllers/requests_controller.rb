@@ -15,7 +15,9 @@ class RequestsController < ApplicationController
   def show
     @offer_status=Status.where(status_type: "offer")
     if(params[:read]&& !@request.offers.last.nil?)
-      @request.offers.last.update(:read=>true)
+      @request.offers.each do |offer|
+        offer.update(:read=>true)
+      end
     end
   end
 
@@ -34,7 +36,9 @@ class RequestsController < ApplicationController
   end
 
   def update_unread_comment
-    Comment.find(params[:comment_id]).update(:read=>true)
+    Offer.find(params[:offer_id]).comments.each do |comment|
+      comment.update(:read=>true)
+    end
   end
 
   def accept_offer

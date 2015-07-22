@@ -28,6 +28,8 @@
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 							<% unread_comments=current_user.received_comments.unread(current_user.id)%>
+							<% my_offer_comments=current_user.received_gave_offer_comments.unread(current_user.id)%>
+							<%unread_comments+=my_offer_comments%>
 							<%if unread_comments.blank?%>
 								<i class="fa fa-envelope fa-fw"></i>
 							<%else%>
@@ -39,7 +41,7 @@
 							<li><small><%=t(:unread_reply)%>:</small></li>
 							<%if unread_comments.blank?%>
 							<li><a href=""><%=t(:empty_message)%>..</a></li>
-							<li class="divider"></li>
+							<br>
 							<%else%>
 							<%unread_comments.each do |comment|%>
 							<li>

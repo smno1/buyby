@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :received_offers, :through=>:requests
   has_many :received_comments, :through=>:requests
+  has_many :received_gave_offer_comments, :through=>:offers
 end

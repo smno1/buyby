@@ -47,6 +47,7 @@ class RequestsController < ApplicationController
     
     respond_to do |format|
       if offer.save
+        Mailer.send_my_offer_notification_mail(offer.user,offer,'您的报价已被接受',true).deliver_now
         format.html { redirect_to :back, notice: t(:accpeted_offer) }
         format.json {}
       else
@@ -62,6 +63,7 @@ class RequestsController < ApplicationController
     
     respond_to do |format|
       if offer.save
+        Mailer.send_my_offer_notification_mail(offer.user,offer,'您的报价已被拒绝',false).deliver_now
         format.html { redirect_to :back, notice: t(:declined_offer) }
         format.json {}
       else

@@ -6,4 +6,11 @@ class Mailer < ApplicationMailer
 		@request=request
 		mail(to: @user.email, subject: subject)
 	end
+
+	def send_my_offer_notification_mail(user,offer,subject,accept)
+		@user=user
+		@offer=offer
+		@accept=accept
+		mail(to: @user.email, subject: subject)
+	end
 end

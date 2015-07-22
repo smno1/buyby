@@ -4,8 +4,11 @@
 			<th><%=t(:subject)%></th>
 			<th><%=t(:offer_description)%></th>
 			<th><%=t(:price)%></th>
-			<th><%=t(:requester)%></th>
-			<th><%=t(:offeree)%></th>
+			<th><%=t(:request_subject)%></th>
+			<%if operation%>
+				<th><%=t(:offeree)%></th>
+			<% end %>
+			<th><%=t(:offerer)%></th>
 			<th><%=t(:status)%></th>
 			<%if operation%>
 			<th><%=t(:operation)%></th>
@@ -21,6 +24,9 @@
 			<td><%= offer.description %></td>
 			<td><%= offer.price %></td>
 			<td><%= offer.request.try :subject %></td>
+			<%if operation%>
+			<td><%= link_to user_management_path(:user_id=>offer.request.user_id) do%><%= offer.user.try :nickname %><%end%></td>
+			<% end %>
 			<td><%= link_to user_management_path(:user_id=>offer.user_id) do%><%= offer.user.try :nickname %><%end%></td>
 			<td>
 				<%if offer.status_id.blank?%>
@@ -28,7 +34,6 @@
 				<%else%>
 				<%= t(offer.status.name.to_sym) %>
 				<%end%>
-				<%= offer.status.try :name %>
 			</td>
 			<%if operation%>
 			<td><%= link_to t(:destroy), offer, method: :delete, data: { confirm: t(:destroy_confirm) } %></td>

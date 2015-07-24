@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>Hi, <%= @user.nickname %></h1>
+  <p>
+    用户<%= @request.user.nickname %>发布新的需求 <br>
+    <%= @request.subject %> <br>
+    <%= @request.description %> <br>
+  </p>
+  <p>
+    <%=link_to '详情访问', request_path(@request)%> <br>
+    <%= t(:thanks_shopping_note) %> http://buyby.herokuapp.com/ <br>
+  </p>
+
+  <p>BuyBy</p>
+</body>
+</html>

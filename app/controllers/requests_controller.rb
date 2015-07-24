@@ -93,7 +93,8 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
-        format.html { redirect_to @request, notice: 'Request was successfully created.' }
+        Mailer.send_new_request_notification_mail(offer.user,@request,'有新的需求发布').deliver_now
+        format.html { redirect_to @request, notice: '需求发布成功' }
         format.json { render :show, status: :created, location: @request }
       else
         format.html { render :new }

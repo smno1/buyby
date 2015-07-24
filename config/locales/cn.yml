@@ -32,11 +32,12 @@ cn:
   unread_reply: "未读回复"
   address_management: "地址管理"
   my_address: "我的地址"
+  address: "地址"
 
   login: "登录"
   signup: "注册"
   logout: "退出登录"
-
+  edit: "编辑"
   nickname: "昵称"
   email: "邮箱"
   password: "密码"

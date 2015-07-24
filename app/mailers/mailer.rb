@@ -13,4 +13,10 @@ class Mailer < ApplicationMailer
 		@accept=accept
 		mail(to: @user.email, subject: subject)
 	end
+
+	def send_new_request_notification_mail(user,request,subject)
+		@user=user
+		@request=request
+		mail(to: @user.email, subject: subject)
+	end
 end

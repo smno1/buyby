@@ -9,6 +9,7 @@
       您要买的： <%= @request.subject %> <br>
       <%= @request.description %> <br>
       <%= t(:offer_notification) %> <br>
+      <%=link_to '详情访问', request_path(@request)%>
     </p>
     <p>
       <%= t(:thanks_shopping_note) %> http://buyby.herokuapp.com/ <br>

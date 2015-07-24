@@ -1,10 +1,10 @@
 <table class=<%=table_class%> >
   <thead>
     <tr>
-      <th>Postcode</th>
-      <th>State</th>
-      <th>City</th>
-      <th>Street</th>
+      <th>邮编</th>
+      <th>省份</th>
+      <th>城市</th>
+      <th>街道</th>
       <th></th>
       <th></th>
     </tr>
@@ -17,8 +17,8 @@
         <td><%= address.state %></td>
         <td><%= address.city %></td>
         <td><%= address.street %></td>
-        <td><%= link_to 'Edit', edit_address_path(address) %></td>
-        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: t(:destroy_confirm) } %></td>
+        <td><%= link_to t(:edit), edit_address_path(address) %></td>
+        <td><%= link_to t(:destroy), address, method: :delete, data: { confirm: t(:destroy_confirm) } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -9,7 +9,8 @@
       您对<%= link_to @offer.request.subject, @offer.request %>需求提出的报价<%=link_to @offer.subject, @offer.request%>已经被<%= @accept ? '接收' : '拒绝'%> <br>
     </p>
     <p>
-      详情请访问： http://buyby.herokuapp.com/ <br>
+      <%=link_to '需求详情', request_path(@offer.request)%><br>
+      更多详情请访问： http://buyby.herokuapp.com/ <br>
     </p>
 
     <p>BuyBy</p>

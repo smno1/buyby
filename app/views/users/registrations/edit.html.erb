@@ -41,6 +41,7 @@
     </div>
 
     <div class="form-group">
+    当前收获地址
     <%= f.select :current_address_id, options_from_collection_for_select(current_user.addresses,"id","full_address", current_user.current_address_id), :class=>"form-control",:id=>"address_select" %>
     <a class="btn btn-default show_next">添加新地址</a>
     <div class="hidden-toggle">

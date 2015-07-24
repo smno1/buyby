@@ -60,6 +60,34 @@ var main = function() {
 		});
 		$(this).removeClass('unread-comment');
 	});
+
+	$('.commit_new_address').click(function(){
+		$.ajax({
+			url: "/add_new_address",
+			data: {
+				postcode : $('.postcode_input').val(),
+				state : $('.state_input').val(),
+				city : $('.city_input').val(),
+				street : $('.street_input').val()
+			},
+			dataType: "script"
+		});
+		$('.hidden-toggle').toggle();
+	});
+
+	$('.commit_new_address_in_my_address').click(function(){
+		$.ajax({
+			url: "/commit_new_address",
+			data: {
+				postcode : $('.postcode_input').val(),
+				state : $('.state_input').val(),
+				city : $('.city_input').val(),
+				street : $('.street_input').val()
+			},
+			dataType: "script"
+		});
+	});
+
 };
 
 $(document).ready(main);

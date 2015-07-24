@@ -82,13 +82,11 @@
               </li>
           <%end%>
           </ul>
-          <%=form_tag(commit_reply_comment_path, :method=>'get') do%>
-          <div class='inline'>
-            <%= text_field_tag :comment_content, nil, :placeholder=>t(:reply_content), :class=>'form-control'%>
+          <%=form_tag(commit_reply_comment_path, :method=>'get',:class=>"form-inline") do%>
+            <%= text_field_tag :comment_content, nil, :placeholder=>t(:reply_content), :class=>'form-control',:size=>"80"%>
             <%=hidden_field_tag :offer_id, offer.id%>
             <%=hidden_field_tag :user_id, current_user.id%>
             <%=submit_tag t(:reply), :class=>"btn btn-default"%>
-          </div>
           <%end%>
         </td>
       </tr>

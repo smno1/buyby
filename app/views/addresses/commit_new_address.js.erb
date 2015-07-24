@@ -1,0 +1,1 @@
+$('#my_addresses').html("<%= escape_javascript(render :partial=>'address_table', :locals=>{:addresses=>current_user.addresses, :table_class=>'table'}) %>")

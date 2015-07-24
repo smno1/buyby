@@ -30,6 +30,8 @@ cn:
   time: "时间"
   current_offers: "当前报价"
   unread_reply: "未读回复"
+  address_management: "地址管理"
+  my_address: "我的地址"
 
   login: "登录"
   signup: "注册"
@@ -54,6 +56,7 @@ cn:
   forgot_your_password: "忘记密码？"
   remember_me: "记住我？"
   select_prompt: "未选择"
+  successful: "成功"
 
   accept: "接受"
   decline: "拒绝"

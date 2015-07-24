@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718052534) do
+ActiveRecord::Schema.define(version: 20150722151337) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "postcode"
+    t.string   "state"
+    t.string   "city"
+    t.string   "street"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -110,6 +122,10 @@ ActiveRecord::Schema.define(version: 20150718052534) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "other_contact_method"
+    t.integer  "current_address_id"
+    t.boolean  "comment_notification"
+    t.boolean  "offer_notification"
+    t.boolean  "gender"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

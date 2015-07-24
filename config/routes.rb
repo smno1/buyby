@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  resources :addresses
+  get 'my_address'=>'addresses#my_address', as: :my_address
   get 'users/show'
   get 'update_unread_comment'=>'requests#update_unread_comment'
+  get 'add_new_address'=>'addresses#add_new_address', as: :add_new_address
+  get 'commit_new_address'=>'addresses#commit_new_address', as: :commit_new_address
   get 'commit_reply_comment'=>'requests#commit_reply_comment', as: :commit_reply_comment
   resources :recommend_products
   resources :products

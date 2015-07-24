@@ -1,0 +1,16 @@
+<h1>我的地址</h1>
+<div id='my_addresses'>
+<%=render :partial=>"address_table", :locals=>{:addresses=>@addresses, :table_class=>'table'}%>
+</div>
+
+<br>
+
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h3>添加新地址</h3>
+	</div>
+	<div class="panel-body">
+		<%=render :partial=>'/addresses/new_address'%>
+		<a class="btn btn-default commit_new_address_in_my_address">添加</a>
+	</div>
+</div>

@@ -1,0 +1,7 @@
+<h1>所有地址</h1>
+
+<%=render :partial=>"address_table", :locals=>{:addresses=>@addresses, :table_class=>'datatable'}%>
+
+<br>
+
+<%= link_to '添加地址', new_address_path, :class=>"btn btn-default" %>

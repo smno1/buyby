@@ -1,0 +1,40 @@
+	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+		<% unread_offers=current_user.received_offers.unread%>
+		<%if unread_offers.blank?%>
+		<i class="fa fa-gavel fa-fw"></i>  
+		<%else%>
+		<i offer-number="<%=unread_offers.count%>" class="fa fa-gavel fa-fw unread-offer-notification"></i>
+		<%end%>
+		<i class="fa fa-caret-down"></i>
+	</a>
+	<ul class="dropdown-menu dropdown-messages">
+		<li><small><%=t(:received_offers)%>:</small></li>
+		<%if unread_offers.blank?%>
+		<li><a href=""><%=t(:empty)%>..</a></li>
+		<li class="divider"></li>
+		<%else%>
+		<%unread_offers.each do |offer|%>
+		<li>
+			<%= link_to request_path(offer.request,:read=>true) do%>
+			<%=offer.subject%>
+			<small>(<span class="text-muted"> <%= offer.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small> <br />
+			<%= offer.description.truncate(20) %>
+			<%end%>
+		</li>
+		<li class="divider"></li>
+		<%end%>
+		<%end%>
+		<li>
+			<%= link_to t(:all_offers)+'..', offers_path%>
+		</li>
+	</ul>
+	<script type="text/javascript">
+	number_of_offer=$('.unread-offer-notification').attr('offer-number')
+	$('.unread-offer-notification').notify(
+		number_of_offer,
+		{position:"bottom",
+		className: 'error',
+		clickToHide: true,
+		autoHide: false}
+		);
+	</script>

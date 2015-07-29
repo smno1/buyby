@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   has_many :received_gave_offer_comments, :through=>:offers
   has_many :addresses
   belongs_to :current_address, :class_name=>'Address'
+
+  def channel
+    "#{nickname}_#{id}"
+  end
 end

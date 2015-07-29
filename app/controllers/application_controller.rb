@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
 
+  def refresh_notification_comment
+  end
+
+  def refresh_notification_offer
+  end
+
   def set_locale
     I18n.locale=params[:locale]||I18n.default_locale
   end

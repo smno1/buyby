@@ -26,6 +26,11 @@ class RequestsController < ApplicationController
       :offer_id=>params[:offer_id], :read=>false)
     respond_to do |format|
       if comment.save
+        if current_user.id==comment.offer.user_id
+          WebsocketRails[comment.offer.request.user.id].trigger("user_notification",{:message => '您收到新的回复'})
+        else
+          WebsocketRails[comment.offer.user.id].trigger("user_notification",{:message => '您收到新的回复'})
+        end
         format.html { redirect_to :back, notice: t(:reply_successful) }
         format.json {}
       else
@@ -93,7 +98,10 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
-        Mailer.send_new_request_notification_mail(offer.user,@request,'有新的需求发布').deliver_now
+        admins=Role.find_by_name('admin').users
+        admins.each do |admin|
+          Mailer.send_new_request_notification_mail(admin,@request,'有新的需求发布').deliver_now
+        end
         format.html { redirect_to @request, notice: '需求发布成功' }
         format.json { render :show, status: :created, location: @request }
       else

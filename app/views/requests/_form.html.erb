@@ -17,11 +17,11 @@
   <%end%>
   <div class="field">
     <%= t(:subject) %><br>
-    <%= f.text_field :subject %>
+    <%= f.text_field :subject,:placeholder=>"想买什么东西呢？" %>
   </div>
   <div class="field">
     <%= t :description %><br>
-    <%= f.text_area :description, :size=>"80x10"%>
+    <%= f.text_area :description, :size=>"80x10",:placeholder=>"可以是精确的描述比如xx牌子的xx毫升的xx，也可以是模糊的比如我要美白，我要给我朋友买香水，价格100刀以内等等 ^_^"%>
   </div>
   <div class="actions">
     <%= f.submit t(:submit)%>

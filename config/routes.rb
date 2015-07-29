@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'refresh_notification_offer'=>'application#refresh_notification_offer', as: :refresh_notification_offer
+  get 'refresh_notification_comment'=>'application#refresh_notification_comment', as: :refresh_notification_comment
   resources :addresses
   get 'my_address'=>'addresses#my_address', as: :my_address
   get 'users/show'

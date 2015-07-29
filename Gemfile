@@ -1,4 +1,10 @@
 source 'https://rubygems.org'
+ruby '2.1.4'
+
+#server gem
+gem 'thin'
+#realtime gem
+gem 'websocket-rails'
 
 #layout gem
 gem 'bootstrap-select-rails'

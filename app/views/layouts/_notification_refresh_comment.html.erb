@@ -1,0 +1,39 @@
+	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+		<% unread_comments=current_user.received_comments.unread(current_user.id)%>
+		<% my_offer_comments=current_user.received_gave_offer_comments.unread(current_user.id)%>
+		<%unread_comments+=my_offer_comments%>
+		<%if unread_comments.blank?%>
+		<i class="fa fa-envelope fa-fw"></i>
+		<%else%>
+		<i message-number="<%=unread_comments.count%>" class="fa fa-envelope-o fa-fw unread-comment-notification"></i>
+		<%end%>
+		<i class="fa fa-caret-down"></i>
+	</a>
+	<ul class="dropdown-menu dropdown-messages">
+		<li><small><%=t(:unread_reply)%>:</small></li>
+		<%if unread_comments.blank?%>
+		<li><a href=""><%=t(:empty_message)%>..</a></li>
+		<br>
+		<%else%>
+		<%unread_comments.each do |comment|%>
+		<li>
+			<%= link_to comment.offer.request do%>
+			<%=comment.user.nickname%>
+			<small>(<span class="text-muted"> <%= comment.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small> <br />
+			<%= comment.content.truncate(20) %>
+			<%end%>
+		</li>
+		<li class="divider"></li>
+		<%end%>
+		<%end%>
+	</ul>
+	<script type="text/javascript">
+	number_of_message=$('.unread-comment-notification').attr('message-number')
+	$('.unread-comment-notification').notify(
+		number_of_message,
+		{position:"bottom",
+		className: 'error',
+		clickToHide: true,
+		autoHide: false}
+		);
+	</script>

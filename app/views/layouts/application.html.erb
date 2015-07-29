@@ -104,7 +104,7 @@
 	</div>
 	<%if !current_user.nil?%>
 	<script type="text/javascript">
-	var dispatcher = new WebSocketRails('buyby-demo.herokuapp.com/websocket');
+	var dispatcher = new WebSocketRails('buyby.herokuapp.com/websocket');
 	var channel = dispatcher.subscribe(<%=current_user.id%>);
 	channel.bind('user_notification', function(data) {
 	$.notify(

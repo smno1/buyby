@@ -1,76 +1,75 @@
-<% if is_admin?%>
-<h2>Requests List
-</h2>
-<br/>
-<div class="dropdown">
-	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-		Filter
-		<span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		<li role="presentation">
-			<%= link_to 'All', request_management_path %>
-		</li>
-		<li role="presentation">
-			<%= link_to 'Unprocessed', request_management_path(:status_id=>get_unprocessed_status_code) %>
-		</li>
-		<li role="presentation">
-			<%= link_to 'Processing', request_management_path(:status_id=>get_processing_status_code) %>
-		</li>
-		<li role="presentation">
-			<%= link_to 'Finished', request_management_path(:status_id=>get_finished_status_code) %>
-		</li>
-		<li role="presentation">
-			<%= link_to 'Closed', request_management_path(:status_id=>get_closed_status_code) %>
-		</li>
-		</ul>
-</div>
-<div class="line-separator"></div>
-<br/>
-<br/>
-<table class='display datatable'>
-	<thead>
-		<tr>
-			<th>Subject</th>
-			<th>Description</th>
-			<th>Request By</th>
-			<th>Time</th>
-			<th>Total Offer</th>
-			<th>Status</th>
-			<th></th>
-		</tr>
-	</thead>
+<% if is_admin? %>
+    <h2>需求列表
+    </h2>
+    <br/>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Filter
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation">
+          <%= link_to 'All', request_management_path %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'Unprocessed', request_management_path(:status_id => get_unprocessed_status_code) %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'Processing', request_management_path(:status_id => get_processing_status_code) %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'Finished', request_management_path(:status_id => get_finished_status_code) %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'Closed', request_management_path(:status_id => get_closed_status_code) %>
+        </li>
+      </ul>
+    </div>
+    <div class="line-separator"></div>
+    <br/>
+    <table class='display datatable'>
+      <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Description</th>
+        <th>Request By</th>
+        <th>Time</th>
+        <th>Total Offer</th>
+        <th>Status</th>
+        <!--<th></th>-->
+      </tr>
+      </thead>
 
-	<tbody>
-		<% @requests.each do |request| %>
-		<tr>
+      <tbody>
+      <% @requests.each do |request| %>
+          <tr>
 
-			<td>
-				<%= link_to request do%>
-					<%= request.subject %>
-				<%end%>
-			</td>
-			<td><%= request.description.truncate(20) %></td>
-			<td><%= request.user.nickname %></td>
-			<td><%= request.created_at %></td>
-			<td><%= request.received_offers.count %></td>
-			<td>
-				<%=form_tag(update_request_status_path, :method=>'get') do%>
-					<div class='inline'>
-					<%= select_tag :status_id, options_from_collection_for_select(@request_status,'id','name',request.status_id),:prompt=> t(:select_prompt), :class=>'selectpicker'%>
-					<%=hidden_field_tag :request_id, request.id%>
-					<%=submit_tag t(:update), :class=>"btn btn-default"%>
-					</div>
-				<%end%>
-			</td>
-			<td>
-			<%= link_to 'show', request, :class=>"btn btn-default"%>
-			</td>
-		</tr>
-		<%end%>
-	</tbody>
-</table>
+            <td>
+              <%= link_to request do %>
+                  <%= request.subject %>
+              <% end %>
+            </td>
+            <td><%= request.description.truncate(20) %></td>
+            <td><%= request.user.nickname %></td>
+            <td><%= request.created_at %></td>
+            <td><%= request.received_offers.count %></td>
+            <td>
+              <%= form_tag(update_request_status_path, :method => 'get') do %>
+                  <div class='inline'>
+                    <%= select_tag :status_id, options_from_collection_for_select(@request_status, 'id', 'name', request.status_id), :prompt => t(:select_prompt), :class => 'selectpicker' %>
+                    <%= hidden_field_tag :request_id, request.id %>
+                    <%= submit_tag t(:update), :class => "btn btn-default" %>
+                  </div>
+              <% end %>
+            </td>
+            <!--<td>-->
+            <!--<%= link_to 'show', request, :class => "btn btn-default" %>-->
+            <!--</td>-->
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%else%>
-You don't have the authority to check this page
-<%end%>
+<% else %>
+    您无权浏览该网页
+<% end %>

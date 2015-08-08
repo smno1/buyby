@@ -1,9 +1,16 @@
 body {
   background-color: #fff;
-  color: #333;
+  color: #fff;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  .container {
+    max-width: 800px;
+  }
+  .navbar {
+    //background-color: #FFD175;
+    border-color: #E7E7E7;
+  }
 }
 
 p, ol, ul, td {

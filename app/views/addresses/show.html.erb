@@ -1,28 +1,28 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
 <p>
-  <strong>Postcode:</strong>
+  <strong>邮编:</strong>
   <%= @address.postcode %>
 </p>
 
 <p>
-  <strong>State:</strong>
+  <strong>省/直辖市:</strong>
   <%= @address.state %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong>市/直辖市辖区:</strong>
   <%= @address.city %>
 </p>
 
 <p>
-  <strong>Street:</strong>
+  <strong>街道:</strong>
   <%= @address.street %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @address.user %>
-</p>
+<!--<p>-->
+  <!--<strong>User:</strong>-->
+  <!--<%= @address.user %>-->
+<!--</p>-->
 
-<%= link_to 'Edit', edit_address_path(@address) %> |
+<%= link_to "再次修改", edit_address_path(@address) %> |

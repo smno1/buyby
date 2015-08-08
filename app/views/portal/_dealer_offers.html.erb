@@ -1,0 +1,23 @@
+<!--<div class="col-lg-12">-->
+<h3 class="page-header">
+  <%= t(:my_offers) %>
+</h3>
+<!--</div>-->
+
+<% current_user.offers.each_slice(3) do |offers| %>
+    <div class="row">
+      <% offers.each do |offer| %>
+          <div class="col-sm-4 left">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4><i class="fa fa-fw fa-gift"></i> <%= offer.subject %></h4>
+              </div>
+              <div class="panel-body">
+                <p> <%= offer.description %></p>
+                <%= link_to t(:view_request), request_path(offer.request, :read => true), :class => "btn btn-default pull-right" %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+<% end %>

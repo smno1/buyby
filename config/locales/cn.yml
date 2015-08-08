@@ -1,26 +1,28 @@
 cn:
-  edit_user: "用户资料编辑"
-  create_request: "我要买"
-  product_name: "商品名称"
-  description: "需求描述"
-  product_description: "产品介绍"
+  edit_user: "我的账户"
+  create_request: "我有新需求"
+  product_name: "Ta叫"
+  description: "描述"
+  product_description: "Ta有什么用？"
   offer_description: "报价内容"
   offer_notification: "有新的报价"
   name: "名称"
   subject: "主题"
-  slogan: "澳洲留学生代购服务平台"
-  desc: "以客户需求为起点，需求驱动服务"
-  recommend: "热门/推介"
-  my_requests: "购买清单"
+  slogan: "Buyby澳洲正品代购"
+  desc: "上帝，有什么我可以为您效劳的？"
+  recommend: "大家都在用什么？"
+  my_requests: "我的需求"
   request_subject: "需求主题"
   offerer: "报价方"
   offeree: "需求方"
-  view_offers: "查看报价"
+  view_offers: "都谁报价啦？"
+  view_request: "查看需求"
   total_offers: "报价数"
   newly_received_offers: "最新收到报价"
   empty: "当前没有新的报价"
   empty_message: "当前没有未读消息"
   all_offers: "所有报价"
+  my_offers: "我的报价"
   user_profile: "个人资料"
   user: "用户"
   provide_offer: "给出报价"
@@ -29,7 +31,7 @@ cn:
   status: "状态"
   time: "时间"
   current_offers: "当前报价"
-  unread_reply: "未读回复"
+  unread_reply: "未读消息"
   address_management: "地址管理"
   my_address: "我的地址"
   address: "地址"
@@ -37,20 +39,20 @@ cn:
   login: "登录"
   signup: "注册"
   logout: "退出登录"
-  edit: "编辑"
+  edit: "修改"
   nickname: "昵称"
   email: "邮箱"
   password: "密码"
-  password_confirmation: "重复输入密码"
+  password_confirmation: "再次输入密码"
   visible_to_admin: "仅对管理员和卖家可见"
   real_name: "真实姓名"
   phone_number: "电话号码"
   other_contact_methods: "其他联系方式"
   characters_minimum: "字符最少"
-  password_change_notification: "如果不需要修改密码的话，请留空"
+  password_change_notification: "如无需要，请留白"
   new_password: "新密码"
-  current_password: "当前密码"
-  need_password: "需要输入密码来确认修改"
+  current_password: "*当前密码"
+  need_password: "*请输入当前密码"
 
   back: "返回"
   update: "更新"
@@ -64,7 +66,7 @@ cn:
   accpeted_offer: "已成功接受报价"
   declined_offer: "已拒绝报价"
   updated_succ: "更新成功"
-  submit: "提交"
+  submit: "就这样啦！"
   not_processed: "未处理"
   login_notice: "登录后即可购买"
   note: "备注"
@@ -76,12 +78,57 @@ cn:
   reply_content: "请输入回复内容"
   reply_successful: "回复成功"
   me: "我"
-  thanks_shopping_note: "谢谢您使用我们的网站"
+  thanks_shopping_note: "谢谢您光临Buyby！"
 
   activerecord:
+    models:
+      user: "用户"
+    attributes:
+      user:
+        password_confirmation: "再次输入密码"
+        current_password: "当前密码"
+      request:
+        subject: "主题"
+        description: "描述"
+      offer:
+        subject: "主题"
+        price: "价格"
+        description: "描述"
+      address:
+        postcode: "邮编"
+        state: "省/直辖市"
+        city: "市/直辖市辖区"
+        street: "街道"
     errors:
       models:
         user:
           attributes:
             current_password:
-              blank: "请填写密码来完成修改"
+              blank: "不能空着亲爱的"
+            password_confirmation:
+              confirmation: "不能空着亲爱的"
+        request:
+          attributes:
+            subject:
+              blank: "不能空着亲爱的"
+            description:
+              blank: "不能空着亲爱的"
+        offer:
+          attributes:
+            subject:
+              blank: "不能空着亲爱的"
+            price:
+              blank: "不能空着亲爱的"
+            description:
+              blank: "不能空着亲爱的"
+        address:
+          attributes:
+            postcode:
+              blank: "不能空着亲爱的"
+            state:
+              blank: "不能空着亲爱的"
+            city:
+              blank: "不能空着亲爱的"
+            street:
+              blank: "不能空着亲爱的"
+

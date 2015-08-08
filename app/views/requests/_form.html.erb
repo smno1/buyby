@@ -1,29 +1,29 @@
 <%= form_for(@request) do |f| %>
-  <% if @request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+    <% if @request.errors.any? %>
+        <div id="error_explanation">
+          <h2>我的上帝，有 <%= pluralize(@request.errors.count, "") %> 个问题。</h2>
 
-      <ul>
-      <% @request.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @request.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <% unless @request.persisted? %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :status_id, :value => get_unprocessed_status_code %>
+        <%= f.hidden_field :read, :value => false %>
+    <% end %>
+    <div class="field">
+      <%= t(:subject) %><br>
+      <%= f.text_field :subject, :placeholder => "3瓶蔓越莓" %>
     </div>
-  <% end %>
-<% unless @request.persisted? %>
-    <%= f.hidden_field :user_id, :value=>current_user.id%>
-    <%= f.hidden_field :status_id, :value=>get_unprocessed_status_code%>
-    <%= f.hidden_field :read, :value=>false%>
-  <%end%>
-  <div class="field">
-    <%= t(:subject) %><br>
-    <%= f.text_field :subject,:placeholder=>"想买什么东西呢？" %>
-  </div>
-  <div class="field">
-    <%= t :description %><br>
-    <%= f.text_area :description, :size=>"80x10",:placeholder=>"可以是精确的描述比如xx牌子的xx毫升的xx，也可以是模糊的比如我要美白，我要给我朋友买香水，价格100刀以内等等 ^_^"%>
-  </div>
-  <div class="actions">
-    <%= f.submit t(:submit)%>
-  </div>
+    <div class="field">
+      <%= t :description %><br>
+      <%= f.text_area :description, class: "col-xs-12", rows: "6", :placeholder => "大到祛斑美白生宝宝，小到奶粉奶瓶尿不湿，只要告诉我们就好。规格价格但说无妨^_^!" %>
+    </div>
+    <div class="actions">
+      <%= f.submit t(:submit) %>
+    </div>
 <% end %>

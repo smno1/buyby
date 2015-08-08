@@ -7,4 +7,6 @@ class Request < ActiveRecord::Base
 	has_one :status
 
 	scope :status_id, ->(status_id) {where :status_id=>status_id}
+
+	validates_presence_of :subject, :description
 end

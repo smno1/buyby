@@ -1,4 +1,9 @@
-<h2><%= t(:create_request) %></h2>
+<% if @request.user_id.equal?(current_user.id) %>
+    <h2><%= t(:my_requests) %></h2>
+<% else %>
+    <h2><%= User.find(@request.user_id).nickname %>的需求</h2>
+<% end %>
+
 <p>
   <strong><%= t(:subject) %>:</strong>
   <%= @request.subject %>
@@ -6,91 +11,95 @@
 
 <p>
   <strong><%= t(:description) %>:</strong>
-  <%= @request.description.gsub(/\n/,'<br>').html_safe %>
+  <%= @request.description.gsub(/\n/, '<br>').html_safe %>
 </p>
 
-<p>
-  <strong><%= t(:user) %>:</strong>
-  <%= @request.user.nickname %>
-</p>
+<!--<p>-->
+<!--<strong><%= t(:user) %>:</strong>-->
+<!--<%= @request.user.nickname %>-->
+<!--</p>-->
+<% if @request.user_id.equal?(current_user.id) %>
+    <%= link_to "修改一下", edit_request_path(@request), class: "btn btn-default" %>
+<% end %>
 
-<% if is_dealer?%>
-	<%=link_to t(:provide_offer), new_request_offer_path(@request), :class=>"btn btn-default" %>
-<%end%>
+<% if is_dealer? %>
+    <%= link_to t(:provide_offer), new_request_offer_path(@request), :class => "btn btn-default" %>
+<% end %>
+
 <br/>
 <h2><%= t(:current_offers) %></h2>
-	<table class='table table-bordered table-hover'>
+<table class='table table-bordered table-hover'>
   <thead>
-    <tr>
-      <th><%= t(:subject) %></th>
-      <th><%= t(:offer_description) %></th>
-      <th><%= t(:price) %></th>
-      <th><%= t(:offer_by) %></th>
-      <th><%= t(:operation) %></th>
-      <th><%= t(:time) %></th>
-    </tr>
+  <tr>
+    <th><%= t(:subject) %></th>
+    <th><%= t(:offer_description) %></th>
+    <th><%= t(:price) %></th>
+    <th><%= t(:offer_by) %></th>
+    <th><%= t(:operation) %></th>
+    <th><%= t(:time) %></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @request.offers.order('created_at desc').each do |offer| %>
-      <%last_comment=offer.comments.last%>
-      <%if last_comment.nil?||last_comment.user_id==current_user.id || last_comment.read%>
-        <tr class='show_next'>
-      <%else%>
-        <%if current_user.id==offer.request.user.id || current_user.id==offer.user.id%>
-          <tr data-id="<%=offer.id%>" class='show_next unread unread-comment'>
-        <%else%>
-          <tr data-id="<%=offer.id%>" class='show_next unread'>
-        <%end%>
-      <%end%>
-      	<td><%= offer.subject %></td>
-        <td><%= offer.description.gsub(/\n/,'<br>').html_safe %></td>
-        <td><%= offer.price %></td>
-        <td><%= offer.user.nickname %></td>
-        <td>
-          <%if offer.status_id.blank?%>
-            <%if offer.request.user_id.eql? current_user.id%>
-              <%=link_to accept_offer_path(:offer_id=>offer.id),:class=>"btn btn-default"  do %> 
-                <%= t(:accept) %> <i class="fa fa-fw fa-check"></i>
-              <%end%>
-              <%=link_to decline_offer_path(:offer_id=>offer.id),:class=>"btn btn-default"  do %> 
-                <%= t(:decline) %> <i class="fa fa-fw fa-times"></i>
-              <%end%>
-            <%else%>
-              <%=t(:not_processed)%>
-            <%end%>
-          <%else%>
+  <% @request.offers.order('created_at desc').each do |offer| %>
+      <% last_comment=offer.comments.last %>
+      <% if last_comment.nil?||last_comment.user_id==current_user.id || last_comment.read %>
+          <tr class='show_next'>
+      <% else %>
+          <% if current_user.id==offer.request.user.id || current_user.id==offer.user.id %>
+              <tr data-id="<%= offer.id %>" class='show_next unread unread-comment'>
+          <% else %>
+              <tr data-id="<%= offer.id %>" class='show_next unread'>
+          <% end %>
+      <% end %>
+      <td><%= offer.subject %></td>
+      <td><%= offer.description.gsub(/\n/, '<br>').html_safe %></td>
+      <td><%= offer.price %></td>
+      <td><%= offer.user.nickname %></td>
+      <td>
+        <% if offer.status_id.blank? %>
+            <% if offer.request.user_id.eql? current_user.id %>
+                <%= link_to accept_offer_path(:offer_id => offer.id), :class => "btn btn-default" do %>
+                    <%= t(:accept) %> <i class="fa fa-fw fa-check"></i>
+                <% end %>
+                <%= link_to decline_offer_path(:offer_id => offer.id), :class => "btn btn-default" do %>
+                    <%= t(:decline) %> <i class="fa fa-fw fa-times"></i>
+                <% end %>
+            <% else %>
+                <%= t(:not_processed) %>
+            <% end %>
+        <% else %>
             <%= t(offer.status.name.to_sym) %>
-          <%end%>
-        </td>
-        <td><em><%= l(offer.created_at, format: '%Y - %m - %-d, %H:%M:%S')%></em></td>
+        <% end %>
+      </td>
+      <td><em><%= l(offer.created_at, format: '%Y - %m - %-d, %H:%M:%S') %></em></td>
       </tr>
       <tr class='hidden-toggle'>
         <td colspan=6>
           <ul class='list-unstyled'>
-          <% offer.comments.each do |comment|%>
-              <li>
-            <% if comment.user_id==current_user.id%>
-                <div class="alert my-message">
-                  <%= t(:me)+": "+comment.content %>
-                </div>
-            <%else%>  
-                <div class="alert others-message ">
-                  <%=comment.user.nickname+": "+ comment.content %>
-                </div>
-            <%end%>
-              </li>
-          <%end%>
+            <% offer.comments.each do |comment| %>
+                <li>
+                  <% if comment.user_id==current_user.id %>
+                      <div class="alert my-message">
+                        <%= t(:me)+": "+comment.content %>
+                      </div>
+                  <% else %>
+                      <div class="alert others-message ">
+                        <%= comment.user.nickname+": "+ comment.content %>
+                      </div>
+                  <% end %>
+                </li>
+            <% end %>
           </ul>
-          <%=form_tag(commit_reply_comment_path, :method=>'get',:class=>"form-inline") do%>
-            <%= text_field_tag :comment_content, nil, :placeholder=>t(:reply_content), :class=>'form-control',:size=>"80"%>
-            <%=hidden_field_tag :offer_id, offer.id%>
-            <%=hidden_field_tag :user_id, current_user.id%>
-            <%=submit_tag t(:reply), :class=>"btn btn-default"%>
-          <%end%>
+          <%= form_tag(commit_reply_comment_path, :method => 'get', :class => "form-inline") do %>
+              <%= text_field_tag :comment_content, nil, :placeholder => t(:reply_content), :class => 'form-control', :size => "80" %>
+              <%= hidden_field_tag :offer_id, offer.id %>
+              <%= hidden_field_tag :user_id, current_user.id %>
+              <%= submit_tag t(:reply), :class => "btn btn-default" %>
+          <% end %>
         </td>
       </tr>
-    <%end%>
+  <% end %>
   </tbody>
 </table>
  

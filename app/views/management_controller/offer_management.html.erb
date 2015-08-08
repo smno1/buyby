@@ -1,13 +1,13 @@
-<% if is_admin?%>
-<h2>Offer Management</h2>
-<h3>Recieved Offers</h3>
-<%= render :partial => '/offers/offer_table', :locals => {:offers=> @received_offers,:operation=>false}%>
-<br />
-<h3>My Offers</h3>
-<%= render :partial => '/offers/offer_table', :locals => {:offers=> @my_offers,:operation=>true}%>
-<br />
-<h3>All Offers</h3>
-<%= render :partial => '/offers/offer_table', :locals => {:offers=> @offers,:operation=>false}%>
-<%else%>
-You don't have the authority to check this page
-<%end%>
+<% if is_admin? %>
+    <h2>报价管理</h2>
+    <h3>已接受的报价</h3>
+    <%= render :partial => '/offers/offer_table', :locals => {:offers => @received_offers, :operation => false} %>
+    <br/>
+    <h3>我的报价</h3>
+    <%= render :partial => '/offers/offer_table', :locals => {:offers => @my_offers, :operation => true} %>
+    <br/>
+    <h3>所有报价</h3>
+    <%= render :partial => '/offers/offer_table', :locals => {:offers => @offers, :operation => false} %>
+<% else %>
+    您无权浏览该网页
+<% end %>

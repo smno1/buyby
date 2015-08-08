@@ -1,33 +1,33 @@
 <%= form_for(@offer) do |f| %>
-  <% if @offer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+    <% if @offer.errors.any? %>
+        <div id="error_explanation">
+          <h2>亲爱的，有 <%= pluralize(@offer.errors.count, "") %> 个问题。</h2>
 
-      <ul>
-      <% @offer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @offer.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <% unless @offer.persisted? %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :request_id, :value => params[:request_id] %>
+        <%= f.hidden_field :read, :value => false %>
+    <% end %>
+    <div class="field">
+      <%= f.label :subject, "主题" %><br>
+      <%= f.text_field :subject %>
     </div>
-  <% end %>
-<% unless @offer.persisted? %>
-    <%= f.hidden_field :user_id, :value=>current_user.id%>
-    <%= f.hidden_field :request_id, :value=>params[:request_id]%>
-    <%= f.hidden_field :read, :value=>false%>
-  <%end%>
-  <div class="field">
-    <%= f.label :subject %><br>
-    <%= f.text_field :subject %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price, :class => 'text_field', :step => 'any' %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, :size=>"80x10"%>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :price, "价格" %><br>
+      <%= f.number_field :price, :class => 'text_field', :step => 'any' %>
+    </div>
+    <div class="field">
+      <%= f.label :description, "描述" %><br>
+      <%= f.text_area :description, class:"col-xs-12", rows:"6" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "提交报价" %>
+    </div>
 <% end %>

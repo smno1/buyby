@@ -1,53 +1,31 @@
-<h1 >
-	<%=t(:slogan)%>
+<h1>
+  <%= t(:slogan) %>
 </h1>
 <p>
-	<%=t(:desc)%>
+  <%= t(:desc) %>
 </p>
-<div class="col-lg-12">
-	<h1 class="page-header">
-		<%=t(:recommend)%>
-	</h1>
-</div>
+
+<!--<div class="col-lg-12">-->
+<h3 class="page-header">
+  <%= t(:recommend) %>
+</h3>
+<!--</div>-->
+
 <div class="owl-carousel">
-	<% @recommends.each do |rp|%>
-	<div> 
-		<%=link_to rp.product do%>
-		<img src=<%=rp.product.img_url%> height="120" width="120"> 
-		<%end%>
-	</div>
-	<%end%>
+  <% @recommends.each do |rp| %>
+      <div>
+        <%= link_to rp.product do %>
+            <img src=<%= rp.product.img_url %> height="120" width="120"/>
+        <% end %>
+      </div>
+  <% end %>
 </div>
 
 <% if user_signed_in? %>
-
-<div class="col-lg-12">
-	<h1 class="page-header">
-		<%=t(:my_requests)%>
-	</h1>
-</div>
-<% current_user.requests.each_slice(3) do |requests|%>
-<div class="row">
-	<%requests.each do |request| %>
-	<div class="col-md-4">
-		<%if request.received_offers.last.nil? || request.received_offers.last.read%>
-			<div class="panel panel-default">
-		<%else%>
-			<div class="panel panel-info portal_new_offer">
-		<%end%>
-			<div class="panel-heading">
-				<h4><i class="fa fa-fw fa-gift"></i> <%=request.subject%></h4>
-			</div>
-			<div class="panel-body">
-				<p> <%=request.description%></p>
-				<em>(<%=t(:total_offers)%>: <%=request.received_offers.count%>)</em>
-				<%=link_to t(:view_offers), request_path(request,:read=>true),:class=>"btn btn-default pull-right"%>
-			</div>
-		</div>
-	</div>
-	<%end%>
-</div>
-<%end%>
-<%=link_to t(:create_request), new_user_request_path(current_user), :class=>"btn btn-default" %>
-
-<%end%>
+    <% if is_dealer? %>
+        <%= render "portal/dealer_offers" %>
+        <%= render "portal/user_requests" %>
+    <% else %>
+        <%= render "portal/user_requests" %>
+    <% end %>
+<% end %>

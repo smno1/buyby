@@ -10,11 +10,11 @@ when "admin"
 	admin=User.find_by :email =>ENV["ADMIN"]
 	admin.add_role :admin
 when "status"
-	#Status.create(status_type: "offer", name: "accept")
-	#Status.create(status_type: "offer", name: "decline")
-
-	#Status.create(status_type: "request", name: "unprocessed")
-	#Status.create(status_type: "request", name: "processing")
-	#Status.create(status_type: "request", name: "finished")
+	Status.create(status_type: "offer", name: "accept")
+	Status.create(status_type: "offer", name: "decline")
+  #
+	Status.create(status_type: "request", name: "unprocessed")
+	Status.create(status_type: "request", name: "processing")
+	Status.create(status_type: "request", name: "finished")
 	Status.create(status_type: "request", name: "closed")
 end

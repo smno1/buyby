@@ -1,126 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>BuyBy</title>
-	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<%=favicon_link_tag%>
-	<%= csrf_meta_tags %>
+  <title>BuyBy</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= favicon_link_tag %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
-	<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<%=link_to BuyBy, portal_welcome_path, :class=>"navbar-brand"%>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<% if user_signed_in? %>
-					<li>
-						<a href="">
-							Hi, <strong> <%= current_user.nickname %> </strong>.
-						</a>
-					</li>
-					<li class="dropdown" id="refresh_comment">
-						<%=render :partial=>'layouts/notification_refresh_comment'%>
-					</li>
-					<li class="dropdown" id="refresh_offer">
-						<%=render :partial=>'layouts/notification_refresh_offer'%>
-					</li>
-					
-					<li class='dropdown'>
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-							<i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-						</a>
-						<ul class="dropdown-menu dropdown-user">
-							<li>
-								<%= link_to edit_user_registration_path do %>
-								<i class="fa fa-user fa-fw"></i> <%=t(:user_profile)%>
-								<%end%>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<%= link_to my_address_path do %>
-								<i class="fa fa-map-marker fa-fw"></i><%=t(:my_address)%>
-								<%end%>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<%= link_to destroy_user_session_path, method: :delete do %>
-								<i class="fa fa-sign-out fa-fw"></i> <%=t(:logout)%>
-								<%end%>
-							</li>
-						</ul>
-					</li>
-					<% if is_admin?%>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
-						<ul class="dropdown-menu">
 
-							<li>
-								<%= link_to 'Requests Management', request_management_path%>
-							</li>
+<div class="container">
+  <%= render 'layouts/nav' %>
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>  alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= value %>
+      </div>
+  <% end %>
+  <%= yield %>
+</div>
 
-							<li>
-								<%= link_to 'Users Management', user_management_path%>
-							</li>
-							<li>
-								<%= link_to 'Offers Management', offer_management_path%>
-							</li>
-							<li>
-								<%= link_to 'Products Management', products_path%>
-							</li>
-							<li>
-								<%= link_to 'Recommend Management', recommend_products_path%>
-							</li>
-						</ul>
-					</li>
-					<%end%>
-					<% else %>
-					<li>
-						<%= link_to t(:login), new_user_session_path %>
-					</li>
-					<li>
-						<%= link_to t(:signup), new_user_registration_path %>
-					</li>
-					<% end %>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container -->
-	</nav>
-	<% flash.each do |key, value| %>
-	<div class="alert alert-<%= key %>  alert-dismissable">
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		<%= value %>
-	</div>
-	<% end %>
-	<div class="col-xs-offset-1 col-xs-10">
-		<%= yield %>
-	</div>
-	<%if !current_user.nil?%>
-	<script type="text/javascript">
-	var dispatcher = new WebSocketRails('buyby-demo.herokuapp.com/websocket');
-	var channel = dispatcher.subscribe(<%=current_user.id%>);
-	channel.bind('user_notification', function(data) {
-	$.notify(
-		data.message,
-		{className: 'info',
-		clickToHide: true,
-		autoHide: false}
-		);
-	$.ajax({
-    	url: "/refresh_notification_comment"
- 	})
-	$.ajax({
-    	url: "/refresh_notification_offer"
- 	})
-});
-</script>
-	<%end%>
+<% if !current_user.nil? %>
+    <script type="text/javascript">
+        var dispatcher = new WebSocketRails('buyby.herokuapp.com/websocket');
+        var channel = dispatcher.subscribe(<%=current_user.id%>);
+        channel.bind('user_notification', function (data) {
+            $.notify(
+                    data.message,
+                    {
+                        className: 'info',
+                        clickToHide: true,
+                        autoHide: false
+                    }
+            );
+            $.ajax({
+                url: "/refresh_notification_comment"
+            })
+            $.ajax({
+                url: "/refresh_notification_offer"
+            })
+        });
+    </script>
+<% end %>
 </body>
 </html>

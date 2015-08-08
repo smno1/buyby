@@ -9,6 +9,7 @@ gem 'websocket-rails'
 #layout gem
 gem 'bootstrap-select-rails'
 gem 'owlcarousel-rails'
+
 #gem datatable
 gem 'jquery-datatables-rails', '~> 3.3.0'
 #gem for solving turbolink problem

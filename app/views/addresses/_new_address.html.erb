@@ -1,8 +1,6 @@
 <div class="field">
-	<%= text_field_tag :postcode,nil, :placeholder=>"邮编",:class=>"postcode_input"%>
-	<%= text_field_tag :state,nil, :placeholder=>"省份",:class=>"state_input"%>
-	<%= text_field_tag :city,nil, :placeholder=>"城市",:class=>"city_input"%>
-</div>
-<div class="field">
-	<%= text_field_tag :street,nil, :placeholder=>"街道",:size=>100,:class=>"street_input"%>
+  <%= text_field_tag :postcode, nil, :placeholder => "邮编", size: 10, :class => "postcode_input" %>
+  <%= text_field_tag :state, nil, :placeholder => "省/直辖市", size: 10, :class => "state_input" %>
+  <%= text_field_tag :city, nil, :placeholder => "市/直辖市辖区", size: 10, :class => "city_input" %>
+  <%= text_field_tag :street, nil, :placeholder => "街道", size:30,:class => "street_input" %>
 </div>
